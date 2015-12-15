@@ -5,11 +5,13 @@ require_relative 'client'
 class Vod
   include Client
 
-  attr_reader :id, :name
+  attr_reader :id, :name, :title, :subtitle, :thumbnail, :url, :feed
 
-  def initialize(id, name)
+  def initialize(id, title, subtitle)
     @id = id
-    @name = name
+    @name = title + ' - ' + subtitle
+    @title = title
+    @subtitle = subtitle
 
     ROUTES[:vod].with(id) do |doc|
       @thumbnail = (doc % "IMAGES/GRAND").content

@@ -1,30 +1,7 @@
-div, html, body {
-  margin: 0;
-  padding: 0;
-}
 
-.container {
-  height: 100%;
-  width: 100%;
-  position: relative;
-}
-
-h1, h2 {
-  font-family: 'Lato', sans-serif;
-  font-weight: 300;
-}
-
-h3 {
-  font-family: 'Slabo 13px', serif;
-  font-weight: 400;
-}
-
-body, html {
-  height: 100%;
-  font-family: 'Lato', sans-serif;
-  font-weight: 300;
-}
-
+/*******************
+ *     MIXINS      *
+ ******************/
 @mixin slide-inner {
   position: absolute;
   top: 7%;
@@ -41,10 +18,6 @@ body, html {
   
   &img, &div {
     border-radius: 2px;
-  }
-  
-  &:hover {
-    opacity: 0.9;
   }
 }
 
@@ -67,6 +40,7 @@ body, html {
     bottom: 0;
     left: 0;
     right: 0;
+    padding: 0 20px;
     
     &::before {
       content: "";
@@ -76,23 +50,16 @@ body, html {
       left: 0;
       right: 0;
       z-index: 1;
-      background-color: rgba(0, 0, 0, 0.3);
-      -webkit-filter: blur(6px);
-              filter: blur(6px);
+      background-color: rgba(20, 20, 20, 0.76);
     }
   }
   
-  .slide-title {
-    margin: 10px 3%;
+  .slide-title, .slide-subtitle {
+    margin: 10px 0;
     z-index: 2;
     position: relative;
   }
-  
-  .slide-subtitle {
-    margin: 10px 5%;
-    z-index: 2;
-    position: relative;
-  }
+  .slide-subtitle { margin-left: 20px; }
 }
 
 @mixin slidedeck {
@@ -101,12 +68,51 @@ body, html {
   flex-wrap: nowrap;
 }
 
+
+/*******************
+ *      RULES      *
+ ******************/
+
+div, html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+h1, h2 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+h3 {
+  font-family: 'Slabo 13px', serif;
+  font-weight: 400;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
 .slide-inner {
   @include slide-inner;
   
   background-color: #DADFEA;
   border-color: #DADFEA;
   color: #DADFEA;
+  
+  -webkit-transition: border 80ms ease-in;
+          transition: border 80ms ease-in;
+  
+  &:hover {
+    border-color: #D90429;
+  }
 }
 
 .slide {

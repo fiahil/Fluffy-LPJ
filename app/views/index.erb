@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:300|Slabo+13px' rel='stylesheet' type='text/css'>
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+
+    <script src="http://localhost:35729/livereload.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="slidedeck">
+        <% for @vod in @lpj.vods %>
+          <div class="slide" data-id="<%= @vod.id %>" data-show="<%= @lpj.id %>">
+            <div class="slide-inner" style="background-image:url(<%= @vod.thumbnail %>);">
+              <img class="slide-logo" alt="lpj" src="img/lpj.png" />
+              <div class="slide-title-block">
+                <h2 class="slide-title"><%= @vod.title %></h2>
+                <h3 class="slide-subtitle"><%= @vod.subtitle %></h3>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="slidedeck">
+        <% for @vod in @lg.vods %>
+          <div class="slide" data-id="<%= @vod.id %>" data-show="<%= @lg.id %>">
+            <div class="slide-inner" style="background-image:url(<%= @vod.thumbnail %>);">
+              <img class="slide-logo" alt="lpj" src="img/lpj.png" />
+              <div class="slide-title-block">
+                <h2 class="slide-title"><%= @vod.title %></h2>
+                <h3 class="slide-subtitle"><%= @vod.subtitle %></h3>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    
+    <script data-main="js/main" src="js/require.js" async></script>
+  </body>
+</html>

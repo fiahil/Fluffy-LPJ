@@ -1,7 +1,15 @@
 #\ -p 5000
 
-require_relative 'app'
+require 'sass/plugin/rack'
+require_relative 'app/app'
 
-use Rack::Reloader, 0
+Sass::Plugin.options[:style] = :compressed
+Sass::Plugin.options[:template_location] = 'assets/css/'
+Sass::Plugin.options[:css_location] = 'assets/css/'
+Sass::Plugin.options[:sourcemap] = :none
+
+use Sass::Plugin::Rack
+use Rack::Reloader
+
 run Sinatra::Application
 
