@@ -12,7 +12,7 @@ end
 get '/:id' do
   lpj = Show.new(249)
   lpj.select([params['id']]).each do |vod|
-    `open #{vod.fetch("media/out")} -a vlc`
+    `open #{vod.fetch("tmp/out")} -a vlc`
   end
   "open!"
 end

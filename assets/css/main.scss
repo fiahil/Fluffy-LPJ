@@ -1,0 +1,123 @@
+div, html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+h1, h2 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+h3 {
+  font-family: 'Slabo 13px', serif;
+  font-weight: 400;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+@mixin slide-inner {
+  position: absolute;
+  top: 7%;
+  bottom: 7%;
+  left: 3.9375%;
+  right: 3.9375%;
+  cursor: pointer;
+  border-radius: 2px;
+  background-position: center center;
+  background-size: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.56);
+  border-radius: 2px;
+  border: solid 2px;
+  
+  &img, &div {
+    border-radius: 2px;
+  }
+  
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+@mixin slide {
+  position: relative;
+  flex-basis: 100%;
+  align-self: stretch;
+  
+  .slide-logo {
+    opacity: 0.6;
+    max-width: 25%;
+    max-height: 25%;
+    position: absolute;
+    top: 3%;
+    left: 3%;
+  }
+  
+  .slide-title-block {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.3);
+      -webkit-filter: blur(6px);
+              filter: blur(6px);
+    }
+  }
+  
+  .slide-title {
+    margin: 10px 3%;
+    z-index: 2;
+    position: relative;
+  }
+  
+  .slide-subtitle {
+    margin: 10px 5%;
+    z-index: 2;
+    position: relative;
+  }
+}
+
+@mixin slidedeck {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.slide-inner {
+  @include slide-inner;
+  
+  background-color: #DADFEA;
+  border-color: #DADFEA;
+  color: #DADFEA;
+}
+
+.slide {
+  @include slide;
+  
+  background-color: #2B2D42;
+}
+
+.slidedeck {
+  @include slidedeck;
+  
+  height: 50%;
+  width: 225%;
+}
