@@ -16,4 +16,9 @@ require([], function () {
             slide.attributes['data-show'].value,
             slide.attributes['data-id'].value);
     });
+    
+    document.addEventListener("mousewheel", function (e) {
+
+        window.scrollBy(-e.wheelDeltaY, 0);
+    }, false);
 });
